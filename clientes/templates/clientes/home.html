@@ -2,166 +2,168 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Home</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="utf-8">
+  <title>Home</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
 
-        body {
-            background-color: #f0f0f0;
-        }
+    body {
+      background-color: #f0f0f0;
+    }
 
-        header {
-            width: 100%;
-            background-color: #1486bb;
-            margin: 0;
-            display: flex;
-            justify-content: space-between;
-        }
+    header {
+      width: 100%;
+      background-color: #1486bb;
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+    }
 
-        header h1 {
-            color: #353333;
-            padding: 20px;
-            animation: move 700ms;
-            animation-fill-mode: backwards;
-        }
+    header h1 {
+      color: #353333;
+      padding: 20px;
+      animation: headerMove 1.2s;
+      animation-fill-mode: backwards;
+    }
 
-        header nav {
-            align-items: center;
-            display: flex;
-            padding-right: 30px;
-        }
+    @keyframes headerMove {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+        transform: translateX(60px);
+      }
 
-        header nav a {
-            color: #353333;
-            text-decoration: none;
-            margin-right: 10px;
-        }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+        transform: translateX(0px);
+      }
+    }
 
-        header nav a:hover {
-            color: #a8a8a8;
-        }
+    header nav {
+      align-items: center;
+      display: flex;
+      padding-right: 30px;
+    }
 
-        @keyframes move {
-            0% {
-                opacity: 0;
-                transform: scale(0.8);
-            }
+    header nav a {
+      color: #353333;
+      text-decoration: none;
+      margin-right: 10px;
+    }
 
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
+    header nav a:hover {
+      color: #a8a8a8;
+    }
 
-        div {
-            width: 90%;
-            margin: 30px auto 0 auto;
-            padding: 20px;
-        }
+    div {
+      width: 90%;
+      margin: 30px auto 0 auto;
+      padding: 20px;
+    }
 
-        div table {
-            background-color: #e0e0e0;
-            width: 60%;
-            margin: auto;
-            padding: 10px;
-            border: 1px solid #a8a8a8;
-        }
+    div table {
+      background-color: #e0e0e0;
+      width: 60%;
+      margin: auto;
+      padding: 10px;
+      border: 1px solid #a8a8a8;
+    }
 
-        div table td {
-            padding: 2px;
-        }
+    div table td {
+      padding: 2px;
+    }
 
-        div table td#title {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            padding-bottom: 10px;
-        }
+    div table td#title {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      padding-bottom: 10px;
+    }
 
-        div table td.cliente {
-            padding: 10px;
-        }
+    div table td.cliente {
+      padding: 10px;
+    }
 
-        div table td.cliente:hover {
-            background-color: #42a4d1;
-            cursor: pointer;
-        }
+    div table td.cliente:hover {
+      background-color: #42a4d1;
+      cursor: pointer;
+    }
 
-        div table td.cliente a {
-            text-decoration: none;
-            color: #000;
-        }
+    div table td.cliente a {
+      text-decoration: none;
+      color: #000;
+    }
 
-        footer {
-            background-color: #1486bb;
-            text-align: center;
-            position: absolute;
-            bottom: 0px;
-            left: 0px;
-            width: 100%;
-        }
+    footer {
+      background-color: #1486bb;
+      text-align: center;
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      width: 100%;
+    }
 
-        footer h3 {
-            padding: 10px 0 10px 0;
-            color: #353333;
-        }
-    </style>
+    footer h3 {
+      padding: 10px 0 10px 0;
+      color: #353333;
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-        <span>
-            <h1>Clientagem</h1>
-        </span>
-        <nav>
-            <a href="{% url 'add_cliente' %}">Novo Cliente</a>
-            <a href="{% url 'add_funcionario' %}">Novo Funcionario</a>
-        </nav>
-    </header>
-    <div>
-        <table>
-            <tr>
-                <td id="title">
-                    Usuários
-                </td>
-            </tr>
-            {% for cliente in clientes  %}
-            <tr>
-                <td class="cliente">
-                    <a href="{% url 'detalhes_cliente' cliente.pk%}">
-                        {{cliente.nome}} - {{cliente.endereco}}
-                    </a>
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
+  <header>
+    <span>
+      <h1>Clientagem</h1>
+    </span>
+    <nav>
+      <a href="{% url 'add_cliente' %}">Novo Cliente</a>
+      <a href="{% url 'add_funcionario' %}">Novo Funcionario</a>
+    </nav>
+  </header>
+  <div>
+    <table>
+      <tr>
+        <td id="title">
+          Usuários
+        </td>
+      </tr>
+      {% for cliente in clientes  %}
+      <tr>
+        <td class="cliente">
+          <a href="{% url 'detalhes_cliente' cliente.pk%}">
+            {{cliente.nome}} - {{cliente.endereco}}
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
 
-    <div>
-        <table>
-            <tr>
-                <td id="title">
-                    Funcionarios
-                </td>
-            </tr>
-            {% for funcionario in funcionarios  %}
-            <tr>
-                <td class="cliente">
-                    <a href="{% url 'detalhes_funcionario' funcionario.pk%}">
-                        {{funcionario.nome}} - {{funcionario.apelido}}
-                    </a>
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
-    <footer>
-        <h3>© 2019 - Guilherme Luís Ulbriki & Matheus Nicolay</h3>
-    </footer>
+  <div>
+    <table>
+      <tr>
+        <td id="title">
+          Funcionarios
+        </td>
+      </tr>
+      {% for funcionario in funcionarios  %}
+      <tr>
+        <td class="cliente">
+          <a href="{% url 'detalhes_funcionario' funcionario.pk%}">
+            {{funcionario.nome}} - {{funcionario.apelido}}
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <footer>
+    <h3>© 2019 - Guilherme Luís Ulbriki & Matheus Nicolay</h3>
+  </footer>
 </body>
 
 </html>
