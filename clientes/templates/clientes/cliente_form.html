@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {  
+                background-color: #f0f0f0;
+            }
+
+            header {
+                width: 100%;
+                background-color: #1486bb;
+                margin: 0;
+            }
+
+            header h1 {
+                color: #353333;
+                padding: 20px;
+                animation: move 700ms;
+                animation-fill-mode: backwards;
+            }
+
+            @keyframes move {
+                0% {
+                    opacity: 0;
+                    transform: scale(0.8);
+                } 100% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            div.form {
+                padding: 20px;
+                display: flex;
+                justify-content: space-evenly;
+            }
+
+            form input.submit {
+                display: block;
+                margin: 30px auto;
+                padding: 6px 12px 6px 12px;
+                background-color: #1486bb;
+                color: #f0f0f0;
+                border: 0px;
+            }
+
+            form input.submit:hover {
+                background-color: #f0f0f0;
+                color: #1486bb;
+                border: 1px solid #ccc;
+            }
+
+            footer {
+                background-color: #1486bb;
+                text-align: center;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                width: 100%;
+            }
+
+            footer h3 {
+                padding: 10px 0 10px 0;
+                color: #353333;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Clientagem</h1>
+        </header>
+            <form action="" method="POST">
+                <div class="form">
+                    {% csrf_token %}
+                    {{ form }}
+                </div>
+                <input class="submit" type="submit" value="{% if cliente %}Atualizar{% else %}cadastrar{% endif %}">
+            </form>
+        <footer>
+            <h3>© 2019 - Guilherme Luís Ulbriki & Matheus Nicolay</h3>
+        </footer>
+    </body>
+</html>
